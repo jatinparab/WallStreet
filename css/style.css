@@ -1,0 +1,145 @@
+#main-holder{
+    background-color: #fff;
+    margin-top:  20px;
+    border-radius: 25px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    border: 0px solid #ccc;
+    box-shadow: 6px 6px 15px #aaa;
+}
+
+.red{
+    color: red !important;
+}
+.green{
+    color: green;
+}
+
+#header-holder{
+    color:#fff;
+    box-shadow: 0px 3px 3px #aaa;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: #2198c3;
+}
+
+.greenfade {
+  background-color:lightgreen;
+  animation-name:bckanim;
+  animation-fill-mode:forwards;
+  animation-duration:2s;
+  animation-delay:0s;
+}
+
+.redfade{
+  background-color:lightpink;
+  animation-name:fckanim;
+  animation-fill-mode:forwards;
+  animation-duration:2s;
+  animation-delay:0s;  
+}
+
+@keyframes fckanim { 
+    0% {background-color:lightpink;}
+  100% { background-color:transparent;}
+}
+
+@keyframes bckanim {
+  0% {background-color:lightgreen;}
+  100% { background-color:transparent;}
+}
+
+
+body{
+    background-color: #eee;
+}
+.fa-arrow-up{
+    color:green;
+}
+
+.fa-arrow-down{
+    color:red !important;
+}
+
+.container-stock{
+    
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.title-stock{
+    color: #2198c3;
+}
+
+
+/*STYLE FOR BUY SELL*/
+
+.btn {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 4px 5px #ccc;
+  -moz-box-shadow: 2px 4px 5px #ccc;
+  box-shadow: 2px 4px 5px #ccc;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 24px;
+  padding: 11px 40px 11px 40px;
+  text-decoration: none;    
+  margin: 40px;
+}
+
+#holder-button{
+    padding-top:  50px;
+    display: table;
+    margin: 0 auto;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  color:#fff;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.displayNone{
+    display: none;
+}
+
+.displayVisible{
+    visibility: visible;
+}
+
+.select{
+    width: 100%;
+    margin-top: 10px;
+}
+
+#trans_holder{
+    background-color: #fff;
+    border-radius: 25px;
+    margin-bottom: 50px;
+    padding-left: 0;
+    padding-right: 0;
+    border: 0px solid #ccc;
+    box-shadow: 6px 6px 15px #aaa;
+}
+
+#confirm-holder{
+    display: table;
+    margin: 0 auto;
+}
