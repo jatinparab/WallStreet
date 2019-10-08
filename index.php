@@ -27,6 +27,23 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
       <![endif]-->
     </head>
+    <script>
+    function gettoalstockvalue(receiptno)
+        {
+            console.log(receiptno);
+            console.log("called");
+            var xhttp; 
+                  xhttp = new XMLHttpRequest();
+                  xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("final_price_sell_total").innerHTML = this.responseText;
+                         getTotalSell(select_company_sell.value,select_number_sell.value);
+                    }
+                  };
+                  xhttp.open("GET", "get_total_stock_price.php?receiptno="+receiptno, true);
+                  xhttp.send();
+        }
+        </script>
     <body>
         <div class="col-sm-12">
             <div class="container-fluid" id="holder-button">
@@ -35,6 +52,8 @@
                 <button class="btn" onclick="display('buy_panel')">Buy</button>
                 <button class="btn" onclick="display('sell_panel')">Sell</button>
                 <a href="get_winners.php"><button class="btn">Leaderboard</button></a>
+                <a href="changeroundno.php"><button class="btn">Change Round No</button></a>
+
             </div>    
         </div>
         <div id="buy_panel" class="col-sm-12">
@@ -140,6 +159,48 @@
                 </div>
                 </form>
             </div>
+            <div class="container" id="trans_holder">
+                <div class="container-fluid" id="header-holder">
+                    <h1 class="text-center">Sell All Stocks</h1>
+                </div>
+                <br><br>
+                <form action="transaction_sell_all.php" onsubmit="return validateSell()" method="get">
+                <div class="col-sm-2">
+                    <h4 class="text-center">Receipt Number</h4>
+                </div>
+                <div class="col-sm-2">
+                    <select class="select" onchange="gettoalstockvalue(this.value)" id="select_receipt_sell_total" name="select_receipt_sell_total">
+                        <?php
+                         $sql1 = "SELECT * from participants";
+                         $result_receipt = $conn ->query($sql1);
+                         $result_sell = $conn ->query($sql1);   
+                         $i=0;
+                        while($row = $result_sell -> fetch_assoc()){ ?>
+                      
+                      <option value="<?php echo $row["receipt_number"] ?>"><?php echo $row["receipt_number"];
+                     
+                      ?></option>
+                        <?php
+                    
+                    } ?>
+                    </select>
+                </div>
+               
+               
+                <br><br><br><br>
+                <div class="col-sm-12">
+                    <h2 class="text-center">Total</h2>
+                    <
+                    <h1 class="text-center" id="final_price_sell_total"></h1>
+                    <input name="final_price_sell" id="hidden_final_price_sell" style="display:none">
+                </div>
+                <div class="col-sm-12">
+                <div  id="confirm-holder">
+                    <button class="btn" type="submit">Confirm</button>
+                </div>
+                </div>
+                </form>
+            </div>
         </div>
         
         
@@ -147,6 +208,7 @@
         
         
         <script>
+            gettoalstockvalue(document.getElementById("select_receipt_sell_total").value);
             function validateSell(){
                 var p2 = document.getElementById("final_price_sell").innerHTML;
                 p2 = p2.slice(3,);
@@ -255,7 +317,7 @@
             getNumber(select_receipt_sell.value, select_company_sell.value);
             changeNumber(document.getElementById("select_receipt").value);
             getAmount(document.getElementById("select_receipt").value);
-            
+        
         </script>
     </body>
 </html>

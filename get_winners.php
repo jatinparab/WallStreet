@@ -3,7 +3,11 @@
     if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
     }
-    $sql1 = "SELECT * from participants";
+    $query ="select * from round";
+    $res = $conn->query($query);
+    $row = $res->fetch_assoc();
+    $roundno = $row['currentround'];
+        $sql1 = "SELECT * from participants where round='$roundno'";
     $result_receipt = $conn -> query($sql1);
 
 ?>
@@ -58,13 +62,19 @@
                         <?php } ?>
                     </select>
             </h3>
-            <button onclick="addParticipant(document.getElementById('receipt_number').value)" class="btn">Add</button>
+            <button onclick="addParticipant(document.getElementById('receipt_number').value)" disabled class="btn">Add</button>
         </div>
     
     
     </body>
 <script>
      var children = document.getElementById("data").childNodes;
+     var e = document.getElementById("receipt_number");
+     var i=0;
+     for(i=0;i<e.length;i++)
+     {
+         addParticipant(e.options[i].value);
+     }
     function addParticipant(str){
          xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function(){
